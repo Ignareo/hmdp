@@ -43,8 +43,9 @@ public class UserController {
 
     /**
      * 登录功能
-     * @param loginForm 登录参数，包含手机号、验证码；或者手机号、密码
+     * @param loginForm 登录参数，包含手机号、验证码or密码
      */
+    // 前端发JSON，@RequestBody让 Spring MVC 把 JSON 反序列化为 Java对象（LoginFormDTO）
     @PostMapping("/login")
     public Result login(@RequestBody LoginFormDTO loginForm, HttpSession session){
         return userService.login(loginForm, session);

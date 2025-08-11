@@ -28,6 +28,7 @@ public class User implements Serializable {
 
     /**
      * 主键
+     * 主键id由数据库自增生成（通常是MySQL的自增主键）
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
