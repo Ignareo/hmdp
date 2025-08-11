@@ -24,8 +24,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import static com.hmdp.utils.JwtClaimsConstant.USER_ID;
-import static com.hmdp.utils.JwtUtil.createJwt;
 import static com.hmdp.utils.RedisConstants.*;
 import static com.hmdp.utils.SystemConstants.*;
 
@@ -81,7 +79,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         if (!cacheCode.equals(code)) {
             return Result.fail("验证码错误");
         }
-        // 4. 校验通过后，删除验证码
+        // 4. 校验通过后，删除验证码 ⚠️⚠️
         stringRedisTemplate.delete(LOGIN_CODE_KEY + phone);
         // 5. 根据手机号查询用户 ⚠️
         User user = query().eq("phone", phone).one();
